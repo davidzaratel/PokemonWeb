@@ -16,11 +16,6 @@ class NameForm(FlaskForm):
     name = StringField('¿Cual es tu nombre?', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-class FirstValForm(FlaskForm):
-    primerValor = StringField('Ingresa el primer valor:', validators=[DataRequired()])
-    segundoValor = StringField('Ingresa el segundo valor:', validators=[DataRequired()])
-    submit = SubmitField('Submit')
-
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -46,22 +41,3 @@ def registro():
             name = form.name.data
             form.name.data = ''
         return render_template('registro.html', form=form, name=name)
-
-
-@app.route('/calculadora', methods=['GET', 'POST'])
-def calculadora():
-        # primero = None
-        # segundo = None
-        resultado = None
-        primerValor = None
-        segundoValor = None
-        form = FirstValForm()
-        if form.validate_on_submit():
-            primerValor = form.primerValor.data
-            segundoValor = form.segundoValor.data
-            resultado = int(primerValor) + int(segundoValor)
-            form.primerValor.data = ''
-            form.segundoValor.data = ''
-
-        # resultado = primerValor + segundoValor
-        return render_template('calculadora.html', form=form, resultado=resultado)
