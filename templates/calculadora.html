@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}CMW{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>{% if resultado %}El resultado es {{ resultado }}, fue calculado exitosamente {% else %}Ingresa los dos numeros que quieres sumar{% endif %}</h1>
+</div>
+{{ wtf.quick_form(form) }}
+{% endblock %}
