@@ -1,6 +1,6 @@
 {% extends "bootstrap/base.html" %}
 
-{% block title %}CMW{% endblock %}
+{% block title %}PokeWeb{% endblock %}
 
 {% block head %}
 {{ super() }}
@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block navbar %}
-<div class="navbar navbar-inverse" role="navigation" style="background-color: #0E273C; ">
+<div class="navbar navbar-inverse" role="navigation" style="background-color: #faa307; ">
     <div class="container" style="color:white;">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -18,13 +18,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">CMW</a>
+            <a class="navbar-brand" href="/"style="color:#9b2226;">Pokemon</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="/">Inicio</a></li>
-              <li><a href="/pokeinfo">Pokemones</a></li>
-              <li><a href="/movies">Peliculas</a></li>
+              <li><a href="/" style="color:#9b2226;">Inicio</a></li>
+              <li><a href="/pokeinfo" style="color:#9b2226;">Pokemones</a></li>
+              <li><a href="/movies" style="color:#9b2226;">Peliculas</a></li>
             </ul>
         </div>
     </div>
