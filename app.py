@@ -5,6 +5,7 @@ from flask_moment import Moment
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+from bs4 import BeautifulSoup
 import requests
 
 app = Flask(__name__)
@@ -27,9 +28,6 @@ def page_not_found(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('500.html'), 500
-
-
-
 
 @app.route('/')
 def index():
@@ -65,3 +63,34 @@ def pokeinfo():
         form.name.data = ''
 
     return render_template('pokeinfo.html', form=form, pokeData=pokeData)
+
+
+
+
+URL = "https://animangapedia.fandom.com/es/wiki/Lista_de_pel%C3%ADculas_de_Pok%C3%A9mon"
+page = requests.get(URL)
+
+soup = BeautifulSoup(page.content, "html.parser")
+results = soup.find(id="content")
+
+table = results.find_all("table", class_="wikitable")
+
+info = table[0].find("tbody")
+movies = info.find_all("tr")
+
+multipleLines = ""
+singleLine = ""
+movieString = ""
+for i in range(2,len(movies)):
+  multipleLines = movies[i].text
+  singleLine = multipleLines.replace(".\n\n",". ")
+  singleLine = singleLine.replace("\n\n",", lanzada el ")
+  singleLine = singleLine.replace("\n", "")
+  movieString += singleLine + '\n'
+
+
+
+
+@app.route('/movies')
+def movies():
+        return render_template('movies.html', movieString=movieString)
