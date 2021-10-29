@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Pokemon Web{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>{% if pokeData %} Mostrando información del Pokemon {{ pokeData[0].capitalize() }} {% else %}Ingresa el nombre del Pokemon que quieres buscar{% endif %}</h1>
+</div>
+{{ wtf.quick_form(form) }}
+{% if pokeData %}
+
+<br>
+<p class="h2">Información sobre tu Pokemon</p>
+<br>
+
+<!-- [nombre, altura, peso, experiencia base, número de habilidades, número de movimientos, imagen] -->
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">{{ pokeData[0].capitalize() }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Altura</th>
+        <td>{{ pokeData[1] }} decimetros</td>
+      </tr>
+      <tr>
+        <th scope="row">Peso</th>
+        <td>{{ pokeData[2] }} hectogramos</td>
+      </tr>
+      <tr>
+        <th scope="row">Experiencia base</th>
+        <td colspan="2">{{ pokeData[3] }} XP</td>
+      </tr>
+      <tr>
+        <th scope="row">Número de habilidades</th>
+        <td colspan="2">{{ pokeData[4] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Número de movimientos</th>
+        <td colspan="2">{{ pokeData[5] }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Imagen</th>
+        <td colspan="2">
+            <img src={{ pokeData[6] }} alt="">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endif %}
+{% endblock %}
