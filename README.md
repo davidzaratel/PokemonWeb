@@ -1,12 +1,22 @@
-Flasky
-======
-
-This repository contains the source code examples for the second edition of my O'Reilly book [Flask Web Development](http://www.flaskbook.com).
-
-The commits and tags in this repository were carefully created to match the sequence in which concepts are presented in the book. Please read the section titled "How to Work with the Example Code" in the book's preface for instructions.
-
-For Readers of the First Edition of the Book
---------------------------------------------
-
-The code examples for the first edition of the book were moved to a different repository: [https://github.com/miguelgrinberg/flasky-first-edition](https://github.com/miguelgrinberg/flasky-first-edition).
 # PokemonWeb
+
+Página web creada por David Zárate y Daniel Maldonado usando Flask con la que se puede consultar información sobre los pokemones, a través de llamadas a la api https://pokeapi.co/, y sus películas, usando web scraping.
+
+## Instalación
+
+Para instalar ejecutar esta web, instale las siguientes dependencias:
+```
+pip install flask
+```
+
+Use el siguiente comando para generar el ejecutable de Flask:
+```
+export FLASK_APP=app.py
+```
+
+Por último, para ejecutar la app, ejecute el siguiente comando:
+```
+flask run
+```
+
+Y listo, ya puede abrir el http://127.0.0.1:5000/ y disfrutar de la PokeWeb.
